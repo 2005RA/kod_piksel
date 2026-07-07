@@ -59,8 +59,15 @@ Deno.serve(async (req) => {
     }
 
     // ── Elapsed time comes ONLY from the server-recorded start ──
+    // Only types the client actually calls start-race for (see isTimedType
+    // in RaceWorkspace.jsx) will ever have a race_starts row. Non-timed
+    // types like 'golf' are scored by charCount, not elapsed time, so they
+    // never get a start recorded — don't require one. `endsAt` itself is
+    // still always sent/stored, since it's also the leaderboard's grouping
+    // key for "which run of this race" (see useRaceLeaderboard).
+    const TIMED_TYPES = new Set(['timed', 'speed', 'bughunt', 'blind', 'reverse']);
     let elapsed = 0;
-    if (endsAt) {
+    if (endsAt && TIMED_TYPES.has(def.type)) {
       const { data: startRow } = await admin
         .from('race_starts')
         .select('started_at')

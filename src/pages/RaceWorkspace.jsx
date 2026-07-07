@@ -233,7 +233,7 @@ export default function RaceWorkspace({ race, onBack }) {
     setChecking(true);
     try {
       const result = await callEdgeFunction('submit-race-result', {
-        raceId: race.id, endsAt: endsAtISO, code,
+      raceId: race.id, endsAt: isTimedType ? endsAtISO : null, code,
       });
 
       if (!result.ok) {

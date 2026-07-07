@@ -6,7 +6,7 @@ export const RACES = [
     id: 1,   icon: '🏁', title: 'HTML Sürət Yarışı #14',
     course: 'htmlcss', label: 'HTML / CSS',
    status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
-endsAt: '2026-07-07T09:32:20', // YYYY-MM-DDTHH:MM:SS, your local time
+endsAt: '2026-07-07T18:41:20', // YYYY-MM-DDTHH:MM:SS, your local time
 sub: ' ',
     type: 'timed', timeLimit: 180, maxHourglasses: 2,
     chips: 10, keys: 1, pixels: 1,
@@ -62,7 +62,7 @@ endsAt: '2026-06-30T20:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
     id: 4, icon: '⛳', title: 'HTML Golf #01',
     course: 'htmlcss', label: 'HTML / CSS',
  status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
-endsAt: '2026-07-03T13:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
+endsAt: '2026-07-07T18:40:00', // YYYY-MM-DDTHH:MM:SS, your local time
     sub: 'Ən qısa kod qazanır!', prize: '60 Çip',
     type: 'golf', charLimit: 60,
     chips: 12, keys: 1, pixels: 1,
