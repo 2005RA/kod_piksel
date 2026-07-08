@@ -5,8 +5,8 @@ export const RACES = [
   {
     id: 1,   icon: '🏁', title: 'HTML Sürət Yarışı #14',
     course: 'htmlcss', label: 'HTML / CSS',
-   status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
-endsAt: '2026-07-07T18:41:20', // YYYY-MM-DDTHH:MM:SS, your local time
+   status: 'live', date: ' ', dateLabel: ' ',
+endsAt: '2026-07-20T18:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
 sub: ' ',
     type: 'timed', timeLimit: 180, maxHourglasses: 2,
     chips: 10, keys: 1, pixels: 1,
@@ -30,7 +30,7 @@ sub: ' ',
     course: 'python', label: 'Python',
 status: 'live', date: '2026-07-15', dateLabel: 'Bu gün, 18:00',
 endsAt: '2026-07-02T15:40:00', // YYYY-MM-DDTHH:MM:SS, your local time
-    sub: 'Başlanğıc: 20:00 · Bu gün', prize: '80 Çip',
+    sub: ' ', prize: '80 Çip',
     type: 'speed', timeLimit: 300, maxHourglasses: 1,
     chips: 15, keys: 2, pixels: 1,
     taskHtml: `<p>Mümkün qədər tez bitir — sürətin sıralamana təsir edir!</p><p><span class="code-chip">&lt;h2&gt;</span> ilə "Salam Python" yaz.</p>`,
@@ -50,7 +50,7 @@ endsAt: '2026-07-02T15:40:00', // YYYY-MM-DDTHH:MM:SS, your local time
     course: 'htmlcss', label: 'HTML / CSS',
 status: 'live', date: '2026-07-08', dateLabel: 'Bu gün, 18:00',
 endsAt: '2026-07-08T10:22:20', // YYYY-MM-DDTHH:MM:SS, your local time — set a few minutes in the future before testing
-    sub: 'Test məqsədilə', prize: '20 Çip',
+    sub: ' ', prize: '20 Çip',
     type: 'timed', timeLimit: 180, maxHourglasses: 2,
     chips: 20, keys: 2, pixels: 2,
     taskHtml: `<p>Bir <span class="code-chip">&lt;h1&gt;</span> yaz, içi boş olmasın.</p>`,
@@ -70,7 +70,7 @@ endsAt: '2026-07-08T10:22:20', // YYYY-MM-DDTHH:MM:SS, your local time — set a
     course: 'htmlcss', label: 'HTML / CSS',
  status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
 endsAt: '2026-07-07T18:40:00', // YYYY-MM-DDTHH:MM:SS, your local time
-    sub: 'Ən qısa kod qazanır!', prize: '60 Çip',
+    sub: ' ', prize: '60 Çip',
     type: 'golf', charLimit: 60,
     chips: 12, keys: 1, pixels: 1,
     taskHtml: `<p>Ən az simvolla <strong>"Salam!"</strong> yazılmış başlıq yarat.</p><p>Hədəf: <strong>60 simvoldan az</strong></p>`,
@@ -90,7 +90,7 @@ endsAt: '2026-07-07T18:40:00', // YYYY-MM-DDTHH:MM:SS, your local time
     course: 'htmlcss', label: 'HTML / CSS',
 status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
 endsAt: '2026-07-01T15:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
-    sub: 'Kodda 3 səhv var — tap və düzəlt!', prize: '90 Çip',
+    sub: ' ', prize: '90 Çip',
     type: 'bughunt', timeLimit: 240, maxHourglasses: 2,
     chips: 18, keys: 2, pixels: 2,
     taskHtml: `<p>Aşağıdakı kodda <strong>3 səhv</strong> var. Hamısını tap və düzəlt!</p><ul><li>Bağlanmamış teq</li><li>Yazı səhvi (imge)</li><li>Dırnaqsız href</li></ul>`,
@@ -115,7 +115,7 @@ endsAt: '2026-07-01T15:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
     course: 'htmlcss', label: 'HTML / CSS',
  status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
 endsAt: '2026-07-03T09:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
-    sub: 'Nəticəni görməyərək yaz!', prize: '100 Çip',
+    sub: ' ', prize: '100 Çip',
     type: 'blind', timeLimit: 300, maxHourglasses: 3,
     chips: 20, keys: 2, pixels: 2,
     taskHtml: `<p>Yalnız koda bax — nəticəni görmədən yaz!</p><p>"Cavabımı Yoxla" düyməsinə basana kimi monitor qapalı qalır.</p><p>Bir <span class="code-chip">&lt;h1&gt;</span>, bir <span class="code-chip">&lt;p&gt;</span> və bir <span class="code-chip">&lt;a&gt;</span> yaz.</p>`,
@@ -137,7 +137,7 @@ endsAt: '2026-07-03T09:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
     course: 'htmlcss', label: 'HTML / CSS',
     status: 'live', date: '2025-01-15', dateLabel: 'Bu gün, 18:00',
 endsAt: '2026-07-05T18:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
-    sub: 'Nəticəni gör, kodu yaz!', prize: '110 Çip',
+    sub: ' ', prize: '110 Çip',
     type: 'reverse', timeLimit: 360, maxHourglasses: 2,
     chips: 22, keys: 2, pixels: 2,
     taskHtml: `<p>Sağdakı <strong>hədəf nəticəni</strong> kodla yenidən yarat.</p>`,

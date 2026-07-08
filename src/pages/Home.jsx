@@ -11,7 +11,7 @@ import { useCountdown } from '../hooks/useCountdown';
 // ── DATA ────────────────────────────────────────────────
 const COURSES = [
   {
-    id: 'htmlcss', name: 'HTML / CSS', lessons: 24, badge: { text: 'YENİ', cls: 'badge-new' },
+    id: 'htmlcss', name: 'HTML / CSS', lessons: 14, badge: { text: 'YENI', cls: 'badge-new' },
     tabColor: '#E44D26', tabDark: '#bf3a1e',
     letters: [
       // H
@@ -25,7 +25,7 @@ const COURSES = [
     ]
   },
   {
-    id: 'python', name: 'Python', lessons: 31, badge: { text: 'POPULYAR', cls: 'badge-hot' },
+    id: 'python', name: 'Python', lessons: 31, badge: { text: 'TEZLİKLƏ', cls: 'badge-soon' },
     tabColor: '#3A86FF', tabDark: '#2060cc',
     letters: [
       {x:6,y:30,w:3,h:14},{x:9,y:30,w:5,h:3},{x:14,y:33,w:3,h:4},{x:9,y:37,w:5,h:3},
@@ -34,16 +34,16 @@ const COURSES = [
       {x:50,y:30,w:3,h:14},{x:53,y:36,w:5,h:3},{x:58,y:30,w:3,h:14},
     ]
   },
+  // {
+  //   id: 'javascript', name: 'JavaScript', lessons: 28, badge: { text: 'YENİ', cls: 'badge-new' },
+  //   tabColor: '#e0a000', tabDark: '#c98900',
+  //   letters: [
+  //     {x:14,y:30,w:3,h:11},{x:17,y:41,w:2,h:2},{x:9,y:43,w:5,h:2},{x:8,y:41,w:2,h:2},
+  //     {x:24,y:30,w:10,h:3},{x:24,y:33,w:3,h:4},{x:24,y:37,w:10,h:3},{x:31,y:40,w:3,h:4},{x:24,y:44,w:10,h:3},
+  //   ]
+  // },
   {
-    id: 'javascript', name: 'JavaScript', lessons: 28, badge: { text: 'YENİ', cls: 'badge-new' },
-    tabColor: '#e0a000', tabDark: '#c98900',
-    letters: [
-      {x:14,y:30,w:3,h:11},{x:17,y:41,w:2,h:2},{x:9,y:43,w:5,h:2},{x:8,y:41,w:2,h:2},
-      {x:24,y:30,w:10,h:3},{x:24,y:33,w:3,h:4},{x:24,y:37,w:10,h:3},{x:31,y:40,w:3,h:4},{x:24,y:44,w:10,h:3},
-    ]
-  },
-  {
-    id: 'excel', name: 'Excel', lessons: 18, badge: null,
+    id: 'excel', name: 'Excel', lessons: 18, badge: { text: 'TEZLIKLƏ', cls: 'badge-soon' },
     tabColor: '#1D6F42', tabDark: '#155232',
     letters: [
       {x:8,y:30,w:3,h:3},{x:19,y:30,w:3,h:3},

@@ -4,10 +4,10 @@ import { RACES } from '../data/races';
 import { useCountdown } from '../hooks/useCountdown';
 
 const STATUS_FILTERS = [
-  { id: 'all',  label: 'Hamısı' },
-  { id: 'live', label: '🔴 Canlı' },
-  { id: 'soon', label: '🟡 Tezliklə' },
-  { id: 'done', label: '⚫ Bitmiş' },
+  // { id: 'all',  label: 'Hamısı' },
+  // { id: 'live', label: '🔴 Canlı' },
+  // { id: 'soon', label: '🟡 Tezliklə' },
+  // { id: 'done', label: '⚫ Bitmiş' },
 ];
 
 const COURSE_FILTERS = [
@@ -90,9 +90,9 @@ export default function RacesPage({ onBack, onRaceClick }) {
     <div className="cp-page">
       <button className="cp-back" onClick={onBack}>← Ana Səhifə</button>
       <p className="page-eyebrow">Yarışlar</p>
-      <h1 className="page-title">Yarış et, zirvəyə çıx</h1>
+      <h1 className="page-title">Yarış və zirvəyə çıx</h1>
       <p className="page-sub">
-        Canlı yarışlara qoşul, çip və açar qazan. Sıralamada yüksəl!
+        Kodlama bacarıqlarını sınayaraq dostlarınla yarış!
       </p>
 
       {/* ── FILTER BAR ── */}

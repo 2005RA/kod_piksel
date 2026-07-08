@@ -65,6 +65,7 @@
   .badge { padding: 2px 7px; font-size: .58rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; border-radius: 2px; letter-spacing: .5px; }
   .badge-new { background: rgba(0,212,170,.15); color: var(--teal); }
   .badge-hot { background: rgba(244,166,0,.15); color: var(--amber); }
+  .badge-soon { background: rgba(244, 203, 80, 0.15); color: #f45050; }
 
   .sb-icon {
   width: 44px; height: 44px;
