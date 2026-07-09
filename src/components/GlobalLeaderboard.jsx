@@ -25,7 +25,7 @@ export default function GlobalLeaderboard({ currentUserId }) {
   return (
     <div className="gl-leaderboard">
       <div className="rank-header">
-        🏅 Sıralama (Bu həftə)
+        🏅 Həftəlik Sıralama
         {timeLeft && <span className="rank-countdown">⏳ {timeLeft}</span>}
         <RewardTiersButton tiers={WEEKLY_REWARDS} />
       </div>
