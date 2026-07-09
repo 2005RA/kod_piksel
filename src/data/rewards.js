@@ -5,7 +5,7 @@
 
 export const RACE_END_REWARDS = [
   { minRank: 1,  maxRank: 3,        keys: 5, hourglasses: 3, pixels: 2 },
-  { minRank: 4,  maxRank: 10,       keys: 3, hourglasses: 1, pixels: 2 },
+  { minRank: 4,  maxRank: 10,       keys: 3, hourglasses: 1, pixels: 1 },
   { minRank: 11, maxRank: Infinity, keys: 1, hourglasses: 0, pixels: 1 },
 ];
 

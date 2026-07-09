@@ -70,7 +70,7 @@ function RewardBadges({ challenge }) {
 
 // ── MAIN ──────────────────────────────────────────────────
 export default function ChallengePage({ courseId, challengeId, totalChallenges, challenges, onBack, onNavigate }) {
-  const { addChips, addReward, completedTasks }  = useRewards();
+  const { addChips, addReward, claimNonChipReward, completedTasks }  = useRewards();
   const { earnPixel }            = usePuzzle();
 
   const challenge = challenges[challengeId];
@@ -160,9 +160,18 @@ export default function ChallengePage({ courseId, challengeId, totalChallenges, 
           }
         }
 
-        // Add keys + hourglasses to reward state
-        if (challenge.keys        > 0) addReward('key',       challenge.keys);
-        if (challenge.hourglasses > 0) addReward('hourglass', challenge.hourglasses);
+        // Add keys + hourglasses to reward state — routed through
+        // claimNonChipReward so the balance is actually persisted server-side
+        // (addReward alone only touches local React state and evaporates on
+        // refresh; chips already went through addChips()/claim_task_reward
+        // above, but keys/hourglasses need their own persisted claim).
+        if (challenge.keys > 0 || challenge.hourglasses > 0) {
+          claimNonChipReward(
+            { keys: challenge.keys || 0, hourglasses: challenge.hourglasses || 0 },
+            `${taskId}-nonchip`,
+            'challenge'
+          );
+        }
       }
 
       setError('');
@@ -279,7 +288,7 @@ export default function ChallengePage({ courseId, challengeId, totalChallenges, 
               </div>
             </div>
             <div className="preview-area">
-              <iframe ref={iframeRef} title="Canlı önizləmə" />
+              <iframe ref={iframeRef} title="Canlı önizləmə" sandbox="allow-scripts allow-popups" />
               <span className="watermark">PİKSEL BRAUZER V1</span>
             </div>
           </section>

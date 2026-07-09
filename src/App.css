@@ -166,7 +166,7 @@
 }
 .main-col { padding-left: 60px; }
 
-// Lesson cards
+/* Lesson cards */
 #kurslar  { padding: 44px 0 38px; border-bottom: 1px solid rgba(255,255,255,.06); }
 #challenge{ padding: 44px 0 38px; border-bottom: 1px solid rgba(255,255,255,.06); }
 #yaris    { padding: 44px 0 44px; }
@@ -2011,7 +2011,7 @@ gba(0,212,170,.08));
   color: var(--accent, #F4A600);
 }
 
-// GIFT_BUTTON
+/* // GIFT_BUTTON */
 
 .reward-tiers-wrap {
   position: relative;

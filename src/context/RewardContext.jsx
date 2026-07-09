@@ -7,6 +7,7 @@ import { RACES } from '../data/races';
 import { RACE_END_REWARDS, WEEKLY_REWARDS, getRewardForRank, PUZZLE_GRAND_REWARD } from '../data/rewards';
 import { loadGuestProgress, saveGuestProgress, clearGuestProgress } from '../utils/guestProgress';
 import { startOfWeek } from '../lib/week';
+import { LEVEL_REWARDS } from '../data/levelRewards';
 
 const RewardContext = createContext(null);
 const MAX_LEVEL = 100;
@@ -52,23 +53,8 @@ function calcLevel(totalChips) {
   return level;
 }
 
-const LEVEL_REWARDS = {
-  2:  { keys: 1,  chips: 0, hourglasses: 0, stickers: 0, label: 'Səviyyə 2'  },
-  3:  { keys: 1,  chips: 0, hourglasses: 1, stickers: 0, label: 'Səviyyə 3'  },
-  4:  { keys: 2,  chips: 0, hourglasses: 1, stickers: 1, label: 'Səviyyə 4'  },
-  5:  { keys: 2,  chips: 0, hourglasses: 2, stickers: 1, label: 'Səviyyə 5'  },
-  6:  { keys: 3,  chips: 0, hourglasses: 2, stickers: 1, label: 'Səviyyə 6'  },
-  7:  { keys: 3,  chips: 0, hourglasses: 3, stickers: 2, label: 'Səviyyə 7'  },
-  8:  { keys: 7,  chips: 0, hourglasses: 5, stickers: 3, label: 'Səviyyə 8'  },
-  9:  { keys: 8,  chips: 0, hourglasses: 5, stickers: 3, label: 'Səviyyə 9'  },
-  10: { keys: 9,  chips: 0, hourglasses: 6, stickers: 3, label: 'Səviyyə 10' },
-  11: { keys: 10, chips: 0, hourglasses: 6, stickers: 3, label: 'Səviyyə 11' },
-  12: { keys: 11,  chips: 0, hourglasses: 7, stickers: 3, label: 'Səviyyə 12' },
-  13: { keys: 11,  chips: 0, hourglasses: 7, stickers: 3, label: 'Səviyyə 13' },
-  14: { keys: 12,  chips: 0, hourglasses: 8, stickers: 3, label: 'Səviyyə 14' },
-  15: { keys: 12,  chips: 0, hourglasses: 8, stickers: 3, label: 'Səviyyə 15' },
-  16: { keys: 13,  chips: 0, hourglasses: 9, stickers: 3, label: 'Səviyyə 16' },
-};
+// Moved to its own file (src/data/levelRewards.js) so the reward-sync
+// script can import it too without pulling in React/JSX.
 
 // ── REWARD POPUP ─────────────────────────────────────────────────────────────
 function RewardPopup({ data, onClose }) {
@@ -348,6 +334,37 @@ export function RewardProvider({ children }) {
     return true;
   }
 
+  // ── LOCAL-ONLY SYNC FOR SERVER-AUTHORITATIVE CHIP AWARDS ─
+  // Race chip awards are a special case: submit-race-result (the edge
+  // function) already re-derives the correct chip amount server-side and
+  // credits it via the service-role key, under the exact same task id
+  // (`race-${raceId}-${endsAt}`), BEFORE it ever responds to the client.
+  // So by the time the client gets here, the real credit already happened —
+  // calling claim_task_reward again would be a redundant, purely-cosmetic
+  // round trip. It's also not safe to route through claim_task_reward,
+  // since that RPC now requires proof against the task_rewards registry,
+  // and race task ids are dynamic (include the race's endsAt) so they can
+  // never be pre-registered. This just mirrors the already-persisted
+  // amount into local UI state — no RPC call, nothing left to forge.
+  function syncServerAwardedChips(taskId, amount) {
+    if (completedTasks.has(taskId) || pendingTasksRef.current.has(taskId)) return false;
+    pendingTasksRef.current.add(taskId);
+    setCompletedTasks(prev => new Set(prev).add(taskId));
+
+    setRewards(prev => {
+      const newChip  = prev.chip + amount;
+      const newLevel = calcLevel(newChip);
+      if (newLevel > prev.level && !levelUpFiredRef.current.has(newLevel)) {
+        levelUpFiredRef.current.add(newLevel);
+        setTimeout(() => triggerLevelUp(newLevel), 0);
+      }
+      return { ...prev, chip: newChip, level: newLevel };
+    });
+
+    window.dispatchEvent(new CustomEvent('chips-updated'));
+    return true;
+  }
+
   // ── PERSISTED KEY/HOURGLASS REWARDS (non-chip) ───────────
   // addReward() only touches local React state — nothing is written to
   // Supabase, so anything routed through it alone (pixel-bubble payouts,
@@ -542,7 +559,7 @@ async function checkRaceRewards() {
 
   return (
     <RewardContext.Provider value={{
-      rewards, completedTasks, addReward, addChips, claimBubbleFromServer, nextLevelAt, MAX_LEVEL, LEVEL_REWARDS, checkWeeklyRewards, checkRaceRewards,
+      rewards, completedTasks, addReward, addChips, syncServerAwardedChips, claimNonChipReward, claimBubbleFromServer, nextLevelAt, MAX_LEVEL, LEVEL_REWARDS, checkWeeklyRewards, checkRaceRewards,
       isGuest: !user,
       guestLocked: !user && rewards.level >= GUEST_LOCK_LEVEL,
     }}>

@@ -64,7 +64,7 @@ function CharCounter({ code, limit }) {
 
 // ── MAIN ─────────────────────────────────────────────────
 export default function RaceWorkspace({ race, onBack }) {
-  const { rewards, addReward, addChips, checkRaceRewards } = useRewards();
+  const { rewards, addReward, syncServerAwardedChips, checkRaceRewards } = useRewards();
   const { earnPixel } = usePuzzle();
   const [userId, setUserId] = useState(null);
 
@@ -249,8 +249,11 @@ export default function RaceWorkspace({ race, onBack }) {
       if (race.type === 'speed') setFinishTime(localElapsed);
 
       if (!result.alreadyCompleted) {
+        // submit-race-result already credited these chips server-side
+        // (under this exact task id) before returning — this just mirrors
+        // that into local UI state, it doesn't re-claim anything.
         const taskId = `race-${race.id}-${endsAtISO ?? 'practice'}`;
-        const chipsAwarded = addChips(taskId, result.chipsEarned ?? 0, 'race');
+        const chipsAwarded = syncServerAwardedChips(taskId, result.chipsEarned ?? 0);
         if (chipsAwarded) flyReward({ type: 'chip', fromEl: rewardRef.current });
       }
 

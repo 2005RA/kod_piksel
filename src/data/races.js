@@ -6,7 +6,7 @@ export const RACES = [
     id: 1,   icon: '🏁', title: 'HTML Sürət Yarışı #14',
     course: 'htmlcss', label: 'HTML / CSS',
    status: 'live', date: ' ', dateLabel: ' ',
-endsAt: '2026-07-20T18:00:00', // YYYY-MM-DDTHH:MM:SS, your local time
+endsAt: '2026-07-09T22:30:00', // YYYY-MM-DDTHH:MM:SS, your local time
 sub: ' ',
     type: 'timed', timeLimit: 180, maxHourglasses: 2,
     chips: 10, keys: 1, pixels: 1,
