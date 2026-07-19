@@ -326,7 +326,13 @@ export function RewardProvider({ children }) {
         p_task_id: taskId,
         p_source: source,
       }).then(({ error }) => {
-        if (error) console.error('claim_task_reward failed:', error);
+        if (error) {
+          console.error('claim_task_reward failed:', error);
+          setCompletedTasks(prev => { const s = new Set(prev); s.delete(taskId); return s; });
+          pendingTasksRef.current.delete(taskId);
+          setRewards(prev => ({ ...prev, chip: Math.max(0, prev.chip - amount) }));
+          window.dispatchEvent(new CustomEvent('chips-updated'));
+        }
       });
     }
 

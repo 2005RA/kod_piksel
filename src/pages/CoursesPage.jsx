@@ -3,7 +3,7 @@
 
 const COURSES = [
   {
-    id: 'htmlcss', name: 'HTML / CSS', lessons: 14, badge: { text: 'YENİ', cls: 'badge-new' },
+    id: 'htmlcss', name: 'HTML / CSS', lessons: 18, badge: { text: 'YENİ', cls: 'badge-new' },
     desc: 'Veb səhifələrin skeletini qur, CSS ilə gözəlləşdir.',
     tabColor: '#E44D26', tabDark: '#bf3a1e',
     letters: [

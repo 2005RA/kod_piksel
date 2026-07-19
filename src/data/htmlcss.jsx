@@ -24,7 +24,7 @@ const htmlcss = {
     },
     {
       id: 'module-2', title: 'Dərs 2 — CSS ilə Stil və Dizayn',
-      status: 'active', lessonCount: 8,
+      status: 'active', lessonCount: 9,
       lessons: [
         { id:10, pill:1, chips:1, title:'CSS Nədir?',                        desc:'Evi bəzəməyə başlayırıq — style atributu ilə tanış oluruq.' },
         { id:11, pill:2, chips:2, title:'Rənglər <color>',                   desc:'Mətnə istənilən rəngi necə veririk?' },

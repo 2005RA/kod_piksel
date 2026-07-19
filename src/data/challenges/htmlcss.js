@@ -117,6 +117,117 @@ export const HTMLCSS_CHALLENGES = {
       return /color:blue/.test(style) && /background-color:yellow/.test(style);
     },
   },
+  7: {
+    id: 7, tag: 'CSS Çalışma', title: 'Qalın Mətn',
+    difficulty: 'ASAN', urlPath: 'challenge-7',
+    chips: 1, keys: 0, hourglasses: 0, pixels: 0,
+    taskHtml: `<p><span class="code-chip">&lt;p&gt;</span> yaz və <span class="code-chip">style="font-weight: bold;"</span> ilə qalınlaşdır.</p>`,
+    starter: '<body>\n  <p style="">Mətnim</p>\n</body>',
+    errorMsg: 'p düzgün bağlanmalı, style="font-weight: bold;" olmalıdır.',
+    validate: (code) => {
+      const p = parseBody(code);
+      if (!p || !p.balanced('p')) return false;
+      const para = p.body.querySelector('p');
+      if (!para) return false;
+      const style = (para.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
+      return /(?:^|;)font-weight:bold(;|$)/.test(style);
+    },
+  },
+
+  8: {
+    id: 8, tag: 'CSS Çalışma', title: 'Xətti Sil',
+    difficulty: 'ASAN', urlPath: 'challenge-8',
+    chips: 1, keys: 0, hourglasses: 0, pixels: 0,
+    taskHtml: `<p><span class="code-chip">&lt;a&gt;</span> teqi yaz (istənilən href) və <span class="code-chip">style="text-decoration: none;"</span> ilə alt xəttini sil.</p>`,
+    starter: '<body>\n  <a href="https://example.com" style="">Keçid</a>\n</body>',
+    errorMsg: 'a düzgün bağlanmalı, href olmalı, style="text-decoration: none;" olmalıdır.',
+    validate: (code) => {
+      const p = parseBody(code);
+      if (!p || !p.balanced('a')) return false;
+      const a = p.body.querySelector('a[href]');
+      if (!a) return false;
+      const style = (a.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
+      return /(?:^|;)text-decoration:none(;|$)/.test(style);
+    },
+  },
+
+  9: {
+    id: 9, tag: 'CSS Çalışma', title: 'Yumru Künclər',
+    difficulty: 'ORTA', urlPath: 'challenge-9',
+    chips: 2, keys: 0, hourglasses: 0, pixels: 1,
+    taskHtml: `<p><span class="code-chip">&lt;div&gt;</span> yarat, <span class="code-chip">background-color</span> və <span class="code-chip">border-radius</span> (10px-dən böyük) ver.</p>`,
+    starter: '<body>\n  <div style="width:100px;height:100px;"></div>\n</body>',
+    errorMsg: 'div-in style-ında background-color olmalı, border-radius 10px-dən böyük olmalıdır.',
+    validate: (code) => {
+      const p = parseBody(code);
+      if (!p || !p.balanced('div')) return false;
+      const div = p.body.querySelector('div');
+      if (!div) return false;
+      const style = (div.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
+      if (!/(?:^|;)background(-color)?:[a-z]+(;|$)/.test(style)) return false;
+      const m = style.match(/(?:^|;)border-radius:(\d+)px(;|$)/);
+      return !!m && Number(m[1]) > 10;
+    },
+  },
+
+  10: {
+    id: 10, tag: 'CSS Çalışma', title: 'Ölçülü Qutu',
+    difficulty: 'ORTA', urlPath: 'challenge-10',
+    chips: 2, keys: 0, hourglasses: 0, pixels: 1,
+    taskHtml: `<p><span class="code-chip">&lt;div&gt;</span> yarat, <span class="code-chip">width</span> və <span class="code-chip">height</span> (hər ikisi 50px-dən böyük) təyin et, görünsün deyə <span class="code-chip">background-color</span> də ver.</p>`,
+    starter: '<body>\n  <div style=""></div>\n</body>',
+    errorMsg: 'div-in style-ında width>50px, height>50px, background-color olmalıdır.',
+    validate: (code) => {
+      const p = parseBody(code);
+      if (!p || !p.balanced('div')) return false;
+      const div = p.body.querySelector('div');
+      if (!div) return false;
+      const style = (div.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
+      const w = style.match(/(?:^|;)width:(\d+)px(;|$)/);
+      const h = style.match(/(?:^|;)height:(\d+)px(;|$)/);
+      if (!w || Number(w[1]) <= 50) return false;
+      if (!h || Number(h[1]) <= 50) return false;
+      return /(?:^|;)background(-color)?:[a-z]+(;|$)/.test(style);
+    },
+  },
+
+  11: {
+    id: 11, tag: 'CSS Çalışma', title: 'Şəffaflıq',
+    difficulty: 'ORTA', urlPath: 'challenge-11',
+    chips: 2, keys: 0, hourglasses: 0, pixels: 1,
+    taskHtml: `<p><span class="code-chip">&lt;p&gt;</span> yaz, <span class="code-chip">background-color</span> ver və <span class="code-chip">opacity</span>-ni 0 ilə 1 arasında (məs. 0.5) təyin et.</p>`,
+    starter: '<body>\n  <p style="background-color:red;">Mətnim</p>\n</body>',
+    errorMsg: 'p-nin style-ında opacity 0-dan böyük, 1-dən kiçik olmalıdır (məs. 0.5).',
+    validate: (code) => {
+      const p = parseBody(code);
+      if (!p || !p.balanced('p')) return false;
+      const para = p.body.querySelector('p');
+      if (!para) return false;
+      const style = (para.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
+      const m = style.match(/(?:^|;)opacity:(0?\.\d+|1)(;|$)/);
+      return !!m && Number(m[1]) > 0 && Number(m[1]) < 1;
+    },
+  },
+
+  12: {
+    id: 12, tag: 'CSS Çalışma', title: 'Kölgə Effekti',
+    difficulty: 'ÇƏTİN', urlPath: 'challenge-12',
+    chips: 4, keys: 1, hourglasses: 0, pixels: 2,
+    taskHtml: `<p><span class="code-chip">&lt;div&gt;</span> yarat: <span class="code-chip">width</span>, <span class="code-chip">height</span>, <span class="code-chip">background-color</span> və <span class="code-chip">box-shadow</span> (formatı: <span class="code-chip">Npx Npx Npx rəng</span>) ver.</p>`,
+    starter: '<body>\n  <div style=""></div>\n</body>',
+    errorMsg: 'div-də width, height, background-color və box-shadow (Npx Npx Npx rəng) olmalıdır.',
+    validate: (code) => {
+      const p = parseBody(code);
+      if (!p || !p.balanced('div')) return false;
+      const div = p.body.querySelector('div');
+      if (!div) return false;
+      const style = (div.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
+      if (!/(?:^|;)width:\d+px(;|$)/.test(style)) return false;
+      if (!/(?:^|;)height:\d+px(;|$)/.test(style)) return false;
+      if (!/(?:^|;)background(-color)?:[a-z]+(;|$)/.test(style)) return false;
+      return /box-shadow:\d+px\d+px\d+px[a-z]+/.test(style);
+    },
+  },
 };
 
 export const TOTAL_CHALLENGES = Object.keys(HTMLCSS_CHALLENGES).length;

@@ -11,7 +11,7 @@ import { useCountdown } from '../hooks/useCountdown';
 // ── DATA ────────────────────────────────────────────────
 const COURSES = [
   {
-    id: 'htmlcss', name: 'HTML / CSS', lessons: 14, badge: { text: 'YENI', cls: 'badge-new' },
+    id: 'htmlcss', name: 'HTML / CSS', lessons: 18, badge: { text: 'YENI', cls: 'badge-new' },
     tabColor: '#E44D26', tabDark: '#bf3a1e',
     letters: [
       // H

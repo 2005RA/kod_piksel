@@ -4,7 +4,7 @@ import { parseBody, matchesSolution } from '../validateHelper.js';
 export const TOTAL_LESSONS = 18;
 export const MODULE1_COUNT = 9;
 
-export const LESSON_CHIPS = { 1:1, 2:1, 3:1, 4:2, 5:3, 6:3, 7:2, 8:1, 9:2, 10:1, 11:1, 12:1, 13:1, 14:1, 15:2, 16:2, 17:1, 18:3};
+export const LESSON_CHIPS = { 1:1, 2:1, 3:1, 4:2, 5:3, 6:3, 7:2, 8:1, 9:2, 10:1, 11:1, 12:1, 13:1, 14:1, 15:2, 16:2, 17:1, 18:5};
 export const SVG = {
   classStamp: `
 <style>
