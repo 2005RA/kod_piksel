@@ -176,7 +176,7 @@ export default function Home({ onCourseClick, onChallengeClick, onGoTo, onRaceCl
           <section id="challenge">
             <div className="section-label">Çalışma</div>
             <div className="challenge-grid">
-              {CHALLENGES.map((ch, i) => (
+              {RACES.slice(0, 4).map((r) => (
                 <div
                   key={i}
                   className="challenge-card"
