@@ -173,26 +173,27 @@ export default function Home({ onCourseClick, onChallengeClick, onGoTo, onRaceCl
           </section>
 
           {/* CHALLENGES */}
-          <section id="challenge">
-            <div className="section-label">Çalışma</div>
-            <div className="challenge-grid">
-              {RACES.slice(0, 4).map((r) => (
-                <div
-                  key={i}
-                  className="challenge-card"
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => onChallengeClick && onChallengeClick(ch.courseId, ch.id)}
-                >
-                  <span className={`ch-lang ${ch.cls}`}>{ch.lang}</span>
-                  <div className="ch-task-name">{ch.name}</div>
-                  <div className="ch-meta">
-                    <Difficulty level={ch.difficulty}/>
-                    <span style={{ fontSize: '.68rem', color: 'var(--muted)' }}>🖥️ {ch.chips} çip</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          {/* CHALLENGES */}
+<section id="challenge">
+  <div className="section-label">Çalışma</div>
+  <div className="challenge-grid">
+    {CHALLENGES.slice(0, 3).map((ch, i) => (
+      <div
+        key={i}
+        className="challenge-card"
+        style={{ cursor: 'pointer' }}
+        onClick={() => onChallengeClick && onChallengeClick(ch.courseId, ch.id)}
+      >
+        <span className={`ch-lang ${ch.cls}`}>{ch.lang}</span>
+        <div className="ch-task-name">{ch.name}</div>
+        <div className="ch-meta">
+          <Difficulty level={ch.difficulty}/>
+          <span style={{ fontSize: '.68rem', color: 'var(--muted)' }}>🖥️ {ch.chips} çip</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
           {/* RACES */}
           <section id="yaris">
